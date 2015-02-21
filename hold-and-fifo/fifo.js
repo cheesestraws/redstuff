@@ -4,8 +4,6 @@ module.exports = function(RED) {
 	function Fifo(config) {
 		RED.nodes.createNode(this,config);
 		
-		var me = this;
-
 		this.queue = [];
 		this.depth = config.depth;
 		this.status({fill:"red",shape:"ring",text:"no value"});
@@ -15,8 +13,8 @@ module.exports = function(RED) {
 			// if so, boot some out
 			if (this.queue.length >= this.depth) {
 				while (this.queue.length >= this.depth) {
-					var msg = this.queue.shift();
-					this.send(msg);
+					var outgoing = this.queue.shift();
+					this.send(outgoing);
 				}
 			} 
 
