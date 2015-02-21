@@ -1,0 +1,34 @@
+<script type="text/x-red" data-template-name="fifo">
+    <!-- don't delete the name -->
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	<label for="node-input-depth">Queue depth</label>
+	<input type="text" id="node-input-depth" placeholder="Depth">
+    </div>
+</script>
+
+
+<script type="text/x-red" data-help-name="fifo">
+This node implements a simple FIFO queue for messages.  Set the depth in the properties of the node and then send messages into its input.  When the queue is full, the oldest messages will come out of the output.
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('fifo',{
+        category: 'wrangling',      // the palette category
+        defaults: {             // defines the editable properties of the node
+            name: {value:""},   //  along with default values.
+	    depth: {value: 4}
+        },
+        inputs:1,               // set the number of inputs - only 0 or 1
+        outputs:1,              // set the number of outputs - 0 to n
+	color: "#C7E9C0",
+        icon: "debug.png",     // saved in  icons/myicon.png
+        label: function() {     // sets the default label contents
+            return this.name||"fifo";
+        },
+        labelStyle: function() { // sets the class to apply to the label
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
