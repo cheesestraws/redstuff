@@ -4,8 +4,6 @@ module.exports = function(RED) {
 	function Hold(config) {
 		RED.nodes.createNode(this,config);
 		
-		var me = this;
-
 		this.saved = null;
 		this.primed = 0;
 		this.status({fill:"red",shape:"ring",text:"no value"});
